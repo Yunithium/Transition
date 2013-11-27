@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Transition</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="smarty_button">Smarty Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_second_fullscreen">SecondFullscreenActivity</string>
+    <string name="smarty_content">SMARTY\nCONTENT</string>
+    <string name="back">&lt;- </string>
+    <string name="forward">-&gt;</string>
+
+</resources>
