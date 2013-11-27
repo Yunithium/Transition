@@ -29,10 +29,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class drawable {
         public static final int black_sabbath=0x7f020000;
-        public static final int black_sabbath_small=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int muse=0x7f020003;
-        public static final int srv=0x7f020004;
+        public static final int ic_launcher=0x7f020001;
+        public static final int muse=0x7f020002;
+        public static final int srv=0x7f020003;
     }
     public static final class id {
         public static final int buttones=0x7f080001;
