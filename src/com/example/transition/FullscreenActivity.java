@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.Toast;
 
 /**
@@ -19,12 +20,17 @@ import android.widget.Toast;
  * @see SystemUiHider
  */
 public class FullscreenActivity extends Activity {
-
+	private RollingStone instance;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_fullscreen);
+        
+        instance = RollingStone.getInstance();
+        instance.setString("Activity 1 was here");
     }
     
     public void changeActivity(View view){
@@ -35,7 +41,7 @@ public class FullscreenActivity extends Activity {
     }
     
     public void goLeft(View view){
-    	Toast.makeText(this, "Can't go back", Toast.LENGTH_SHORT).show();
+    	Toast.makeText(this, instance.getString(), Toast.LENGTH_SHORT).show();
     }
     
     public void goRight(View view){

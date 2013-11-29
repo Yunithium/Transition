@@ -14,6 +14,7 @@ import android.provider.MediaStore;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.MenuItem;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -28,6 +29,7 @@ import android.support.v4.app.NavUtils;
  * @see SystemUiHider
  */
 public class SecondFullscreenActivity extends Activity {
+	private RollingStone instance;
 	private ViewFlipper viewFlipper;
 	private ImageView imageView;
 	private int currentImage;
@@ -39,13 +41,17 @@ public class SecondFullscreenActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_second_fullscreen);
 		
 		// Make sure we're running on Honeycomb or higher to use ActionBar APIs
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             // Show the Up button in the action bar.
             getActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+        }*/
+        
+        instance = RollingStone.getInstance();
         
         currentImage = 0;
         currentImageView = 0;
@@ -77,6 +83,8 @@ public class SecondFullscreenActivity extends Activity {
     }
     
     public void goLeft(View view){
+    	Toast.makeText(this, instance.getString(), Toast.LENGTH_SHORT).show();
+    	
         viewFlipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_right_in));
         viewFlipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_right_out));
         
@@ -91,11 +99,14 @@ public class SecondFullscreenActivity extends Activity {
         imageView.setImageResource(images[currentImage]);
         
         viewFlipper.showPrevious();
+        
     	//finish();
 		//overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
     }
     
     public void goRight(View view){
+    	instance.setString("Activity 2 was here");
+    	
         viewFlipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_in));
         viewFlipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));
         
